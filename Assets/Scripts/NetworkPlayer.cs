@@ -1,14 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class NetworkPlayer : MonoBehaviour
+public class NetworkPlayer : NetworkBehaviour
 {
     
 
 
     void Update()
     {
+        if (!IsOwner) return;
+
+
         Vector3 Movment = Vector3.zero; 
         
         if (Input.GetKey(KeyCode.W)) Movment.z = 1f;
